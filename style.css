@@ -1,0 +1,47 @@
+#foods{
+    width: 70%;
+    
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+    margin: 0 auto;
+}
+.food{
+    background-color: aliceblue;
+    width: 100px;
+    padding: 30px;
+    margin: 5px;
+    border-radius: 20px;
+}
+.food h4{
+    text-align: center;
+}
+.food img{
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+}
+.all-foods{
+    
+}
+#input-area{
+    width: 40%;
+    margin: 50px auto;
+    
+}
+#details{
+    width: 40%;
+    margin: 30px auto;
+}
+#details img{
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+}
+#details div{
+    background-color: aliceblue;
+    width: 100px;
+    padding: 30px;
+    margin: 5px;
+    border-radius: 20px;
+}
