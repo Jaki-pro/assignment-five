@@ -1,11 +1,11 @@
-function main() {
+const main = () => {
     const getInput = document.getElementById("input-area").value;
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${getInput}`)
         .then(res => res.json())
         .then(data => displayFoods(data.meals))
         .catch(err => alert(err))
 }
-function displayFoods(foods) {
+const displayFoods = foods => {
     const foodsDiv = document.getElementById("foods-div");
     foodsDiv.innerHTML = "";
 
@@ -22,7 +22,6 @@ function displayFoods(foods) {
         foodsDiv.appendChild(foodDiv);
     });
 
-
 }
 const showDetails = details => {
     console.log(details);
@@ -30,7 +29,6 @@ const showDetails = details => {
     fetch(url)
         .then(response => response.json())
         .then(data => ingredientPart(data.meals[0]))
-
 }
 
 const ingredientPart = recipe => {
@@ -39,6 +37,7 @@ const ingredientPart = recipe => {
     detailsArea.innerHTML = "";
     const subDetailsArea = document.createElement("div");
     subDetailsArea.classList.add("sub-details-area");
+    
     subDetailsArea.innerHTML = `
         <img src = '${recipe.strMealThumb}'>
         <br>
