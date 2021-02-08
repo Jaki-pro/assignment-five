@@ -15,9 +15,10 @@ const displayFoods = foods => {
         const foodDiv = document.createElement("div");
         foodDiv.classList.add("food-div");
         foodDiv.innerHTML = `
+            <div onclick = "showDetails('${food.strMeal}')">
             <img src ='${food.strMealThumb}'>
             <h5 class="mb-4 mt-2">${food.strMeal}</h5>
-            <button class="btn btn-primary" onclick = "showDetails('${food.strMeal}')">details</button>
+            </div>
         `;
         foodsDiv.appendChild(foodDiv);
     });
@@ -37,7 +38,7 @@ const ingredientPart = recipe => {
     detailsArea.innerHTML = "";
     const subDetailsArea = document.createElement("div");
     subDetailsArea.classList.add("sub-details-area");
-    
+
     subDetailsArea.innerHTML = `
         <img src = '${recipe.strMealThumb}'>
         <br>
