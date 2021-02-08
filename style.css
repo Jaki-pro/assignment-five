@@ -1,47 +1,72 @@
-#foods{
+#foods-div {
     width: 70%;
-    
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
-.food{
+
+.food-div {
     background-color: aliceblue;
-    width: 100px;
+    width: 70%;
     padding: 30px;
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
-.food h4{
+
+.food-div img {
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+    border-radius: 5px;
+}
+
+.food-div h4 {
     text-align: center;
 }
-.food img{
-    margin: 0 auto;
-    display: block;
-    width: 100px;
-}
-.all-foods{
-    
-}
 #input-area{
-    width: 40%;
-    margin: 50px auto;
+    display: inline-block;
+    width: 70%;
     
 }
-#details{
-    width: 40%;
-    margin: 30px auto;
+#input-bar{
+    width:30%;
+    margin: 20px auto;
 }
-#details img{
-    margin: 0 auto;
-    display: block;
-    width: 100px;
+.food-div button{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    right: 1%;
+    
+    
 }
-#details div{
-    background-color: aliceblue;
-    width: 100px;
+.food-div{
+    position: relative;
+}
+#details-area{
+    width: 70%;
+    grid-gap: 10px;
+    margin: 5% 25%;
+    margin-bottom: 10px;
+
+
+}
+.sub-details-area{
+    background-color: rgb(196, 202, 173);
+    width: 70%;
     padding: 30px;
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 10px;
+}
+.sub-details-area img {
+    margin: 0 auto;
+    display: block;
+    width: 300px;
+    border-radius: 10px 10px 0 0;
+    
+}
+.sub-details-area h5{
+    color:rgb(34, 62, 85);
 }

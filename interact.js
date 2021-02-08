@@ -1,97 +1,63 @@
+function main() {
+    const getInput = document.getElementById("input-area").value;
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${getInput}`)
+        .then(res => res.json())
+        .then(data => displayFoods(data.meals))
+        .catch(err => alert(err))
+}
+function displayFoods(foods) {
+    const foodsDiv = document.getElementById("foods-div");
+    foodsDiv.innerHTML = "";
 
+    foods.forEach(food => {
+        console.log(food.strMeal);
 
-
-document.getElementById("food-btn").addEventListener("click",function(){
-    
-
-    document.getElementById("foods").innerHTML = "";
-    const inputFood = document.getElementById("input-food").value;
-    
-    
-
-
-fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${inputFood}`)
-    .then(res => res.json())
-    .then(data => displayFoods(data))
-    .catch(err => alert(err))
-
-const displayFoods = foods => {
-    console.log(foods);
-    const mainFoods = foods.meals;
-
-    for (let i = 0; i < mainFoods.length; i++) {
-        const food = mainFoods[i].strCategory;
-        const foodThumb = mainFoods[i].strMealThumb;
-        
-
-        const foodsDiv = document.getElementById("foods");
         const foodDiv = document.createElement("div");
-        
-        foodDiv.classList.add("food")
+        foodDiv.classList.add("food-div");
         foodDiv.innerHTML = `
-        <img src="${foodThumb}"/>
-            <h4>${food}</h4>
-            <button onclick = "showDetails('${food}')">details</button>
-
+            <img src ='${food.strMealThumb}'>
+            <h5 class="mb-4 mt-2">${food.strMeal}</h5>
+            <button class="btn btn-primary" onclick = "showDetails('${food.strMeal}')">details</button>
         `;
         foodsDiv.appendChild(foodDiv);
-    }
- 
-    
+    });
+
+
 }
-
-})
-
-function showDetails(food){
-    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${food}`
+const showDetails = details => {
+    console.log(details);
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${details}`;
     fetch(url)
-    .then(res => res.json())
-    .then(data => showFood(data.meals[0]))
-}
-function showFood(recipe){
-    
-    const detailsId = document.getElementById("details");
-    detailsId.innerHTML = "";
-    const subDetailsId = document.createElement("div");
-    subDetailsId.innerHTML = `
-        <img src='${recipe.strMealThumb}'
-        <h4>${recipe.strMeal}</h4>
-        <p>${recipe.idMeal}</p>
+        .then(response => response.json())
+        .then(data => ingredientPart(data.meals[0]))
 
+}
+
+const ingredientPart = recipe => {
+
+    const detailsArea = document.getElementById("details-area");
+    detailsArea.innerHTML = "";
+    const subDetailsArea = document.createElement("div");
+    subDetailsArea.classList.add("sub-details-area");
+    subDetailsArea.innerHTML = `
+        <img src = '${recipe.strMealThumb}'>
+        <br>
+        <hr class="text-danger">
+        <h2 class="text-center text-primary">${recipe.strMeal}</h2>
+        <p class="text-center">ID Meal: ${recipe.idMeal}</p>
+        <h5>${recipe.strIngredient1}<h5>
+        <h5>${recipe.strIngredient2}<h5>
+        <h5>${recipe.strIngredient3}<h5>
+        <h5>${recipe.strIngredient4}<h5>
+        <h5>${recipe.strIngredient5}<h5>
+        <h5>${recipe.strIngredient6}<h5>
+        <h5>${recipe.strIngredient7}<h5>
+        <h5>${recipe.strIngredient8}<h5>
+        <h5>${recipe.strIngredient9}<h5>
+        <h5>${recipe.strIngredient10}<h5>
+        
     `;
-    detailsId.appendChild(subDetailsId);
+
+    detailsArea.appendChild(subDetailsArea);
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
-// .then(res =>res.json())
-// .then(all => displayFoods(all.categories))
-
-// const displayFoods = foods => {
-//     for (let i = 0; i < foods.length; i++) {
-//         const food = foods[i];
-//         console.log(food.strCategory);
-
-//         const foodsDiv = document.getElementById("foods");
-        // const foodDiv = document.createElement("div");
-        // foodDiv.classList.add("food")
-        // foodDiv.innerHTML = `
-        //     <img src="${food.strCategoryThumb}"/>
-        //     <h4>${food.strCategory}</h4>
-
-        // `;
-//         foodsDiv.appendChild(foodDiv);
-//     }
-
-// }
